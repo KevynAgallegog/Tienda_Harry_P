@@ -1,0 +1,87 @@
+.cart-container {
+  display: grid;
+  background: linear-gradient(to right, #000, #23a023);
+  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: cursive;
+  margin: 50px;
+  color: rgb(255, 255, 255);
+}
+
+.cart-item {
+  border: 1px solid #000000;
+  border-radius: 30px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+}
+
+.cart-item .item-image img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.cart-item .item-details p {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para los detalles del libro */
+  padding: 10px; /* Añade un relleno a los detalles del libro */
+  border-radius: 5px; /* Borde redondeado */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para resaltar los detalles */
+}
+
+.cart-item .item-details p {
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+}
+
+.cart-item .item-quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cart-item button {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.cart-item button.increment {
+  background-color: green;
+  color: white;
+}
+
+.cart-item button.decrement {
+  background-color: red;
+  color: white;
+}
+
+.buy-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(4, 44, 19, 0.773);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+}
+
+.buy-button:hover {
+  background-color: #05d175b1;
+}
+
+/* Estilo para las tarjetas de libros */
+.cart-item.book-card {
+  background-image: url('https://i.pinimg.com/564x/77/e0/aa/77e0aa4a52924846ae928dd51abe526d.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
