@@ -29,17 +29,14 @@ function App() {
 
   return (
     <div>
-      <h1>Datos de la Base de Datos</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : (
+      
         <ul>
           {data.map((item) => (
             <li key={item.id}>{item.titulo}</li>
             // Reemplaza "id" y "titulo" con los campos de tu tabla
           ))}
         </ul>
-      )}
+      
       <BookStore />
     </div>
   );
