@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import BookStore from './Components/BookStore/BookStore';
-import mysql2 from 'mysql2';
 
 import './App.css';
 
@@ -11,8 +10,8 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Hacer una solicitud GET al servidor para obtener los datos
-    fetch('./Components/server/server.js') // Asegúrate de que esta URL coincida con la ruta de tu servidor
+  
+    fetch('./Components/server/server.js') 
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error de red');
@@ -26,7 +25,7 @@ function App() {
         console.error('Error al obtener datos: ' + error);
         setError(error);
       });
-  }, []); // La dependencia vacía [] asegura que esta solicitud se haga solo una vez al montar el componente.
+  }, []); 
 
   return (
     <div>
