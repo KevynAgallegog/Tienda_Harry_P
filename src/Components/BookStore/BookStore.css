@@ -65,6 +65,7 @@ body {
    margin: 25px;
     font-family: cursive;
     font-size: 14px;
+    background-color: #9797973f;
   }
   
   .book-card img {
@@ -186,3 +187,36 @@ body {
   background-color: #20b177; 
 }
 
+/* Estilos para el stock y botón de agregar */
+.book-card {
+  position: relative;
+}
+
+.book-card .stock {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 8px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.book-card .Agregar {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 8px;
+  background-color: #299e2d76;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.book-card .Agregar:disabled {
+  background-color: #ff3232;
+  cursor: not-allowed;
+}

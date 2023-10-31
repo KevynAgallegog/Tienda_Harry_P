@@ -13,15 +13,16 @@ function BookStore() {
       price: 10.99,
       description: 'The first book in the Harry Potter series.',
       imageUrl: 'https://i.pinimg.com/474x/16/fc/ef/16fcefb7a6af4c45e13020ab4ebfe344.jpg',
-    }
-    ,
+      stock: 15
+    },
     {
       id: 2,
       title: 'Harry Potter and the Chamber of Secrets',
       author: 'J.K. Rowling',
       price: 11.99,
       description: 'The second book in the Harry Potter series.',
-      imageUrl: 'https://i.pinimg.com/474x/cd/74/53/cd745305f88a4139e204f57d11779bd4.jpg'
+      imageUrl: 'https://i.pinimg.com/474x/cd/74/53/cd745305f88a4139e204f57d11779bd4.jpg',
+      stock: 10
     },
     {
         id: 3,
@@ -29,7 +30,8 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 12.99,
         description: 'The third book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/7a/6b/ac/7a6bac2635c0c6fbaa371686ad2b045d.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/7a/6b/ac/7a6bac2635c0c6fbaa371686ad2b045d.jpg',
+        stock: 9
       },
       {
         id: 4,
@@ -37,7 +39,8 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 13.99,
         description: 'The fourth book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/63/e8/55/63e855ededb7bac4cb1accd8a467990e.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/63/e8/55/63e855ededb7bac4cb1accd8a467990e.jpg',
+        stock: 10
       },
       {
         id: 5,
@@ -45,7 +48,8 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 14.99,
         description: 'The fifth book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/8c/9b/a8/8c9ba8c6475ad1d3e5b2e7f36341afcc.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/8c/9b/a8/8c9ba8c6475ad1d3e5b2e7f36341afcc.jpg',
+        stock: 8
       },
       {
         id: 6,
@@ -53,7 +57,8 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 15.99,
         description: 'The sixth book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/d5/93/3d/d5933d3947dfce07f13ac63a1f6f3509.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/d5/93/3d/d5933d3947dfce07f13ac63a1f6f3509.jpg',
+        stock: 11
       },
       {
         id: 7,
@@ -61,7 +66,8 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 16.99,
         description: 'The seventh and final book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/0a/79/dd/0a79dd7d98d41d8142fb2a91a62cce4a.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/0a/79/dd/0a79dd7d98d41d8142fb2a91a62cce4a.jpg',
+        stock: 7
       },
       {
         id: 8,
@@ -69,7 +75,8 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 15.99,
         description: 'The sixth book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/7e/21/a7/7e21a7972917e3993d7b17763da314c1.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/7e/21/a7/7e21a7972917e3993d7b17763da314c1.jpg',
+        stock: 9
       },
       {
         id: 9,
@@ -77,11 +84,11 @@ function BookStore() {
         author: 'J.K. Rowling',
         price: 16.99,
         description: 'The seventh and final book in the Harry Potter series.',
-        imageUrl: 'https://i.pinimg.com/474x/8c/06/a0/8c06a0f8f1c3a8fcc94c4ba97601e580.jpg'
+        imageUrl: 'https://i.pinimg.com/474x/8c/06/a0/8c06a0f8f1c3a8fcc94c4ba97601e580.jpg',
+        stock: 8
       }
-      
-      
-    // Agrega más libros aquí
+
+    // Resto de los libros...
   ]);
 
   const [cartItems, setCartItems] = useState([]);
@@ -90,6 +97,13 @@ function BookStore() {
 
   const addToCart = (book) => {
     const updatedCart = [...cartItems];
+    const updatedBooks = books.map((b) => {
+      if (b.id === book.id && b.stock > 0) {
+        b.stock -= 1;
+      }
+      return b;
+    });
+
     const existingBook = updatedCart.find((item) => item.id === book.id);
 
     if (existingBook) {
@@ -100,10 +114,18 @@ function BookStore() {
     }
 
     setCartItems(updatedCart);
+    setBooks(updatedBooks);
   };
 
   const removeFromCart = (book) => {
     const updatedCart = [...cartItems];
+    const updatedBooks = books.map((b) => {
+      if (b.id === book.id) {
+        b.stock += 1;
+      }
+      return b;
+    });
+
     const existingBook = updatedCart.find((item) => item.id === book.id);
 
     if (existingBook) {
@@ -116,6 +138,7 @@ function BookStore() {
     }
 
     setCartItems(updatedCart);
+    setBooks(updatedBooks);
   };
 
   const handleSearch = () => {
@@ -170,8 +193,9 @@ function BookStore() {
                 <p>Author: {book.author}</p>
                 <p>Price: ${book.price}</p>
                 <p>{book.description}</p>
-                <button className='Agregar' onClick={() => addToCart(book)}>
-                  <img src="https://cdn-icons-png.flaticon.com/128/3523/3523887.png" alt="Carrito" />
+                <p>Stock: {book.stock}</p>
+                <button className='Agregar' onClick={() => addToCart(book)} disabled={book.stock === 0}>
+                  {book.stock === 0 ? 'Agotado' : 'Agregar al carrito'}
                 </button>
               </li>
             ))
@@ -182,8 +206,9 @@ function BookStore() {
                 <p>Author: {book.author}</p>
                 <p>Price: ${book.price}</p>
                 <p>{book.description}</p>
-                <button className='Agregar' onClick={() => addToCart(book)}>
-                  <img src="https://cdn-icons-png.flaticon.com/128/3523/3523887.png" alt="Carrito" />
+                <p>Stock: {book.stock}</p>
+                <button className='Agregar' onClick={() => addToCart(book)} disabled={book.stock === 0}>
+                  {book.stock === 0 ? 'Agotado' : 'Agregar al carrito'}
                 </button>
               </li>
             ))
@@ -195,3 +220,6 @@ function BookStore() {
 }
 
 export default BookStore;
+
+
+
