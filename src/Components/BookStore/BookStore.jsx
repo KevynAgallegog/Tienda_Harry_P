@@ -158,7 +158,8 @@ function BookStore() {
       <div className="search-container">
         <input
           type="search"
-          placeholder="Busca tu libro preferido"
+          placeholder="
+          Look for your favorite  Book"
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -166,7 +167,7 @@ function BookStore() {
           }}
         />
         <button type="button" onClick={handleSearch}>
-          Buscar
+          Search
         </button>
       </div>
 
@@ -181,7 +182,8 @@ function BookStore() {
       </div>
       <br /> <br />
       <p className='typewriter-text'>
-        ¡Bienvenido a la tienda de libros de Harry Potter! Descubre la magia de Hogwarts a través de nuestros libros <br /> y productos mágicos. ¡Encuentra tus tesoros en Tu Tienda Mágica!
+      ¡Welcome to the Harry Potter book store! Discover the magic of Hogwarts through our books <br /> 
+        and magical products. Find your treasures in Your Magic Store!
       </p>
 
       <ul className='book-grid'>
