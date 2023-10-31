@@ -23,7 +23,7 @@ function Cart({ cartItems, removeFromCart, addToCart }) {
   };
 
   const handleRemove = (item) => {
-    // Elimina el libro del carrito
+  
     removeFromCart(item);
   };
 

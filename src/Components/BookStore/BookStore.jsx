@@ -88,7 +88,7 @@ function BookStore() {
         stock: 8
       }
 
-    // Resto de los libros...
+    
   ]);
 
   const [cartItems, setCartItems] = useState([]);
@@ -142,7 +142,7 @@ function BookStore() {
   };
 
   const handleSearch = () => {
-    // Filtra los libros que coinciden con el término de búsqueda
+    
     const filteredBooks = books.filter((book) =>
       book.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -208,7 +208,7 @@ function BookStore() {
                 <p>{book.description}</p>
                 <p>Stock: {book.stock}</p>
                 <button className='Agregar' onClick={() => addToCart(book)} disabled={book.stock === 0}>
-                  {book.stock === 0 ? 'Agotado' : 'Agregar al carrito'}
+                  {book.stock === 0 ? 'Agotado' : 'Add to cart'}
                 </button>
               </li>
             ))
