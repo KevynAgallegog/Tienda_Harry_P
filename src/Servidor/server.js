@@ -2,13 +2,13 @@ import express from 'express';
 import mysql from 'mysql2'; 
 
 const app = express();
-const port = 1080;
+const port = 3306;
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '1091205488Kg',
-  database: 'Tienda_HP',
+  host: 'bm4ktuxkievvpkg4ulch-mysql.services.clever-cloud.com',
+  user: 'ua6mbmlzqt3z2jvw',
+  password: 'x0jMhUD6uTxDW2eAupOD',
+  database: 'bm4ktuxkievvpkg4ulch',
 });
 
 connection.connect((err) => {
